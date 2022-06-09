@@ -1,10 +1,10 @@
-# Extended-Forced-Aligner  
+# Extended Forced Aligner  
 
 Extended Forced Aligner using [Aeneas](https://www.readbeyond.it/aeneas/docs/index.html#) package in Python.  
 It alignes with default align window size of 5 min.  
 Currently supports English and Hindi (and other languages supported by [Aeneas](https://www.readbeyond.it/aeneas/docs/language.html)).  
 
-# Run the aligner  
+## Running the aligner  
 
 Create a new python virtual environment and activate it.  
 
