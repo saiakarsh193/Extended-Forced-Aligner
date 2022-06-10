@@ -136,7 +136,7 @@ def alignExtended(args):
     # cleaning and writing raw text
     print("cleaning raw_text")
     print("writing clean_text")
-    cleanTextForPath(args.text_path, args.temp_path + "/clean_text.txt", args.language)
+    cleanTextForPath(args.text_path, args.temp_path + "/clean_text.txt", args.language, args.transcript_youtube)
 
     # path holders
     audio_path = args.temp_path + "/trim_audio.mp3"
@@ -208,6 +208,7 @@ if __name__ == "__main__":
     parser.add_argument("-out", "--output_path", help="path where the files will be saved", type=str, default="output")
     parser.add_argument("-temp", "--temp_path", help="path for the temporary directory", type=str, default="temp")
     parser.add_argument("--from_youtube", help="downloads the audio from Youtube", action="store_true")
+    parser.add_argument("--transcript_youtube", help="extra parsing for direct youtube trascript", action="store_true")
     args = parser.parse_args()
 
     alignExtended(args)

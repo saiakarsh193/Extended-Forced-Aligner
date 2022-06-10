@@ -28,9 +28,12 @@ def cleanText(text, language):
         text = re.sub(r"[\n]+", "\n\n", text, 0, re.MULTILINE)
     return text
 
-def cleanTextForPath(path, outpath, language):
+def cleanTextForPath(path, outpath, language, transcript_youtube):
     with open(path, 'r') as f:
-        text = f.read()
+        if(transcript_youtube):
+            text = ''.join(f.readlines()[1::2])
+        else:
+            text = f.read()
     text = cleanText(text, language)
     with open(outpath, 'w') as f:
         f.write(text)

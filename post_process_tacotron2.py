@@ -10,9 +10,9 @@ def getFileCount(path):
     flast = int(spout[-1][:spout[-1].find(b'.')])
     return flast
 
-def trimSilence(path, outpath, silence_threshold=-50.0, chunk_size=10):
+def trimSilence(path, outpath, silence_threshold=-50.0, chunk_size=10, sampling_rate=22050):
     assert chunk_size > 0
-    subprocess.run(["ffmpeg","-i", path, outpath], capture_output=True)
+    subprocess.run(["ffmpeg", "-i", path, "-ar", str(sampling_rate), outpath], capture_output=True)
     sound = AudioSegment.from_file(outpath, format="wav")
     trimmed_sound = sound
     duration = len(sound)
@@ -33,17 +33,18 @@ def formatText(path, apath):
     ntext = apath + "|" + text
     return ntext
 
-def processFiles(src, taraud, tartext, count):
+def processFiles(src, taraud, tartext):
     # count here refers to the number of files (index) to be processed from the src directory
+    count = getFileCount(src)
     # src directory has both index.mp3 (audio) and index.txt (transcript)
     sent = ""
     for i in tqdm(range(1, 1 + count)):
         trimSilence(src + "/{filno}.mp3".format(filno=i), taraud + "/{filno}.wav".format(filno=i), -30)
-        sent += formatText(src + "/{filno}.txt".format(filno=i), "wavs/{filno}.wav".format(filno=i)) + "\n"
+        sent += formatText(src + "/{filno}.txt".format(filno=i), taraud + "/{filno}.wav".format(filno=i)) + "\n"
     with open(tartext, 'w') as f:
         f.write(sent[: -1])
 
 # specific post processing unit for tacotron2 input
 
-processFiles("./dataset", "./wavs", "./filelists/train_filelist.txt", 800)
+processFiles("output", "wavs", "filelists/all_filelist.txt")
 
