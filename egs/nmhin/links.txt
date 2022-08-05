@@ -1,0 +1,12 @@
+https://youtu.be/3pz_2qrBLTk transcripts/thodi_si_bewafai.txt       periods/thodi_si_bewafai.prd
+https://youtu.be/OW7UgtpF104 transcripts/saath_saath.txt            periods/saath_saath.prd
+https://youtu.be/gvng8tFoOiQ transcripts/peele_gulab.txt            periods/peele_gulab.prd
+https://youtu.be/8-QoTX-nYvo transcripts/ek_talaaq_shuda_ladki.txt  periods/ek_talaaq_shuda_ladki.prd
+https://youtu.be/LA5dQJwatVs transcripts/umr_ke_mod_par.txt         periods/umr_ke_mod_par.prd
+https://youtu.be/axxrM0zIlr0 transcripts/saanjh_ka_sooraj.txt       periods/saanjh_ka_sooraj.prd
+https://youtu.be/mrYgOhZwupI transcripts/naraaz_nahin_zindagi.txt   periods/naraaz_nahin_zindagi.prd
+https://youtu.be/u7I8-O4HJjk transcripts/rang_mere_mann_ka.txt      periods/rang_mere_mann_ka.prd
+https://youtu.be/R9cZOT2kbWY transcripts/pyaar_ke_intezaar_mein.txt periods/pyaar_ke_intezaar_mein.prd
+https://youtu.be/JuG1KvjUREs transcripts/ka_se_kabira.txt           periods/ka_se_kabira.prd
+https://youtu.be/OxlSZ8hplU8 transcripts/runjhun_ki_mummy.txt       periods/runjhun_ki_mummy.prd
+https://youtu.be/eSzHH7cPHow transcripts/hara_samandar.txt          periods/hara_samandar.prd

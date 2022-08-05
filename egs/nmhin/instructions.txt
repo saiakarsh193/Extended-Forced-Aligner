@@ -1,0 +1,12 @@
+convert {numbers} {hindi}
+remove {english}
+replace \.{2,} <space>
+replace - <space>
+# replace , <space>
+replace \. <period>
+replace ! <period>
+replace \? <period>
+replace । <period>
+remove {symbols}
+remove {fill_spaces}
+final_format
