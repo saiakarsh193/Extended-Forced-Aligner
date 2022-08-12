@@ -1,3 +1,6 @@
-tenv/
-env_align/
 __pycache__/
+env_align/
+downloads/
+dump/
+output/
+*.log
