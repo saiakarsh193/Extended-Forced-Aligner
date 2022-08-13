@@ -1,25 +1,6 @@
 import re
 
-def readInstructions(path):
-    with open(path, 'r') as f:
-        rinst = f.readlines()
-    sinst = [inst.split() for inst in rinst]
-    cinst = []
-    for inst in sinst:
-        if(not(not inst or inst[0][0] == '#')):
-            cinst.append(inst)
-    command_list = {
-            'convert': 2,
-            'remove': 1,
-            'replace': 2,
-            'final_format': 0,
-            }
-    for lno, inst in enumerate(cinst, start=1):
-        assert inst[0] in command_list, f"command not found at line {lno}"
-        assert len(inst) - 1 == command_list[inst[0]], f"invalid number of arguments for command \"{inst[0]}\" at line {lno}"
-    return cinst
-
-def applyInstructions(instructions, file_path, out_path):
+def applyPreInstructions(instructions, file_path, out_path):
     with open(file_path, 'r') as f:
         rtxt = f.read()
     for inst in instructions:

@@ -33,16 +33,46 @@ def getTrimPeriods(path):
     to_time = em * 60 + es
     return seek_time, to_time - seek_time
 
-def getAlignmentsFromSRT(path):
+def readInstructions(path, part):
+    if(part == "pre"):
+        command_list = {
+                'convert': 2,
+                'remove': 1,
+                'replace': 2,
+                'final_format': 0,
+                }
+    elif(part == "post"):
+        command_list = {
+                'segment_wav': 0,
+                'min_length': 1,
+                'max_length': 1,
+                'format': 1,
+                }
+    else:
+        raise Exception("invalid type {pre, post}")
     with open(path, 'r') as f:
-        text = f.read()
-    text = text.split("\n\n")
-    data = []
-    for frag in text:
-        if(len(frag) == 0):
+        rinst = f.readlines()
+    in_post = False
+    cinst = []
+    ucomms = set()
+    for ind, inst in enumerate(rinst, start=1):
+        inst = inst.strip()
+        if(not inst or inst[0] == '#'):
             continue
-        frag = frag.split("\n")
-        sent = frag[2]
-        frag = frag[1].split(" --> ")
-        data.append([sent, getTimeFromText(frag[0]), getTimeFromText(frag[1])])
-    return data
+        elif(inst[0] == '!'):
+            in_post = True
+        else:
+            if((part == "pre" and not in_post) or (part == "post" and in_post)):
+                inst = inst.split()
+                assert inst[0] in command_list, f"command not found at line {lno}"
+                assert len(inst) - 1 == command_list[inst[0]], f"invalid number of arguments for command \"{inst[0]}\" at line {lno}"
+                cinst.append(inst)
+                ucomms.add(inst[0])
+    if(part == "pre"):
+        required = ["final_format"]
+    else:
+        required = ["segment_wav", "format"]
+    for rcom in required:
+        assert rcom in ucomms, f"command {rcom} is required for {part}-processing"
+    return cinst
+
