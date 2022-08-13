@@ -1,3 +1,5 @@
+# pre-processing
+
 convert {numbers} {hindi}
 remove {english}
 replace \.{2,} <space>
@@ -7,6 +9,16 @@ replace \. <period>
 replace ! <period>
 replace \? <period>
 replace । <period>
+replace \| <period>
 remove {symbols}
 remove {fill_spaces}
 final_format
+
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+# post-processing
+
+segment_wav
+min_length 2.5
+max_length 15
+format kaldi
